@@ -1,143 +1,93 @@
-# Import all required libraries
-import cv2          # OpenCV for image processing
-import numpy as np  # NumPy for numerical operations
-import pyautogui    # For taking screenshots
-import time         # For time-related functions
-import os           # For file/folder operations
-from datetime import datetime  # For timestamps
-from pyzbar.pyzbar import decode  # For QR/barcode detection
+# Import necessary libraries - these are toolkits we need
+import cv2          # Computer vision library for image processing
+import pyautogui    # Lets us take screenshots of the screen
+import time         # For adding delays and tracking time
+import os           # For working with files and folders
+from datetime import datetime  # For getting current date/time
 
-# Configuration section - these are settings you can adjust
-CAPTURE_INTERVAL = 2  # Take screenshot every 2 seconds
-OUTPUT_DIR = "monitoring_data"  # Folder to save screenshots
-SENSITIVITY = 0.01    # 1% change considered significant
-MAX_IDLE_TIME = 30    # 30 seconds allowed without activity
-FORBIDDEN_APPS = ["chrome.exe", "notepad.exe"]  # Blocked apps
+# Settings - these are adjustable values that control how the program works
+CHECK_EVERY = 2  # How often to check the screen (in seconds)
+FOLDER = "exam_logs"  # Name of folder where we'll save evidence
 
-# Create the output folder if it doesn't exist
-# exist_ok=True prevents errors if folder already exists
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+# Create folder if needed - makes sure we have a place to save our files
+if not os.path.exists(FOLDER):  # Checks if folder doesn't exist
+    os.mkdir(FOLDER)  # Creates the folder if it's missing
 
-# Initialize variables to store data
-last_screenshot = None  # Will hold the previous screenshot
-events = []  # List to store all detected events
+# Store previous screenshot - we'll compare new screenshots to this
+last_pic = None  # Starts as None because we don't have a first screenshot yet
+alerts = []  # Empty list to store all our alerts/warnings
 
-def capture_screen():
-    """Takes a screenshot and converts it to OpenCV format"""
-    # pyautogui.screenshot() captures the entire screen
-    # np.array() converts it to a NumPy array
-    # cv2.cvtColor converts from RGB to BGR (OpenCV's default format)
-    screenshot = pyautogui.screenshot()
-    return cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
+def take_picture():
+    """Take screenshot and prepare it for analysis"""
+    pic = pyautogui.screenshot()  # Takes picture of entire screen
+    # Convert screenshot to format OpenCV can work with:
+    # 1. np.array converts the image to numbers
+    # 2. cv2.cvtColor changes color format from RGB to BGR
+    return cv2.cvtColor(np.array(pic), cv2.COLOR_RGB2BGR)
 
-def detect_changes(current_frame, last_frame):
-    """Compares current and last frame to detect significant changes"""
-    # If no previous frame exists (first run), return True
-    if last_frame is None:
-        return True
+def check_difference(new, old):
+    """Compare two screenshots to see if something important changed"""
+    if old is None:  # If this is our first screenshot
+        return True  # Consider it changed (nothing to compare to)
     
-    # Calculate absolute difference between current and last frame
-    diff = cv2.absdiff(current_frame, last_frame)
-    # Convert to grayscale for simpler analysis
+    # Calculate difference between current and previous screenshot:
+    diff = cv2.absdiff(new, old)  # Gets absolute difference pixel-by-pixel
+    
+    # Convert to grayscale (black and white) to simplify analysis:
     gray = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
-    # Apply threshold - pixels with >25 difference become white (255)
-    _, threshold = cv2.threshold(gray, 25, 255, cv2.THRESH_BINARY)
     
-    # Count how many pixels changed
-    changed_pixels = cv2.countNonZero(threshold)
-    total_pixels = gray.shape[0] * gray.shape[1]
-    # Calculate percentage of changed pixels
-    change_percent = changed_pixels / total_pixels
+    # Apply threshold - turns grayscale into pure black/white:
+    # - Pixels darker than 25 become black (0)
+    # - Pixels brighter than 25 become white (255)
+    _, thresh = cv2.threshold(gray, 25, 255, cv2.THRESH_BINARY)
     
-    # Return True if change exceeds sensitivity threshold
-    return change_percent > SENSITIVITY
-
-def detect_barcodes(frame):
-    """Detects and decodes any QR/barcodes in the frame"""
-    # pyzbar's decode function finds and reads barcodes
-    barcodes = decode(frame)
-    if barcodes:
-        # Return list of decoded barcode contents
-        return [barcode.data.decode("utf-8") for barcode in barcodes]
-    return []
-
-def check_running_apps():
-    """Checks if any forbidden applications are running (Windows only)"""
-    try:
-        # Run Windows tasklist command to get running processes
-        output = os.popen('tasklist').read()
-        # Check if any forbidden apps are in the tasklist
-        return [app for app in FORBIDDEN_APPS if app in output]
-    except:
-        return []  # Return empty list if command fails
-
-def log_event(event_type, details=""):
-    """Records an event with timestamp and details"""
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    event = {
-        "timestamp": timestamp,
-        "type": event_type,
-        "details": details
-    }
-    events.append(event)
-    # Also print to console for immediate feedback
-    print(f"[{timestamp}] ALERT: {event_type} - {details}")
-
-def save_screenshot(frame, reason):
-    """Saves screenshot with timestamp and reason in filename"""
-    filename = f"{OUTPUT_DIR}/{datetime.now().strftime('%Y%m%d_%H%M%S')}_{reason}.jpg"
-    cv2.imwrite(filename, frame)
-    return filename
-
-def main():
-    global last_screenshot
-    # Record when activity last occurred
-    last_active = time.time()
-
-    print("Starting exam monitoring. Press Ctrl+C to stop...")
+    # Count how many pixels changed (white pixels in thresh image):
+    changed = cv2.countNonZero(thresh)
+    # Get total number of pixels in image:
+    total = gray.shape[0] * gray.shape[1]  # height × width
     
-    try:
-        while True:
-            # 1. Capture current screen
-            current_frame = capture_screen()
-            
-            # 2. Detect if screen content changed significantly
-            changed = detect_changes(current_frame, last_screenshot)
-            if changed:
-                # Update last active time
-                last_active = time.time()
-                # Save screenshot of the change
-                filename = save_screenshot(current_frame, "change")
-                log_event("SCREEN_CHANGE", f"Saved: {filename}")
-                # Update last screenshot
-                last_screenshot = current_frame
-            
-            # 3. Check if user has been idle too long
-            if time.time() - last_active > MAX_IDLE_TIME:
-                log_event("IDLE_TOO_LONG", f"{MAX_IDLE_TIME} seconds")
-                # Reset idle timer
-                last_active = time.time()
-            
-            # 4. Check for barcodes/QR codes
-            barcodes = detect_barcodes(current_frame)
-            if barcodes:
-                log_event("BARCODE_DETECTED", f"Content: {barcodes}")
-            
-            # 5. Check for forbidden applications
-            forbidden_running = check_running_apps()
-            if forbidden_running:
-                log_event("FORBIDDEN_APP", f"Running: {forbidden_running}")
-            
-            # Wait before next capture
-            time.sleep(CAPTURE_INTERVAL)
-    
-    except KeyboardInterrupt:
-        print("\nStopping monitoring...")
-    
-    # Save all events to JSON report
-    with open(f"{OUTPUT_DIR}/report.json", "w") as f:
-        json.dump(events, f, indent=2)
-    print(f"Report saved to {OUTPUT_DIR}/report.json")
+    # Return True if more than 1% of pixels changed:
+    return changed/total > 0.01
 
-if __name__ == "__main__":
-    main()
+def save_alert(what_happened):
+    """Record when something important happens"""
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Current time
+    alerts.append(f"{now} - {what_happened}")  # Add to alerts list
+    print(f"ALERT: {what_happened}")  # Also print to screen
+
+def save_pic(pic, reason):
+    """Save screenshot as evidence"""
+    # Create filename with timestamp and reason:
+    filename = f"{FOLDER}/{datetime.now().strftime('%H%M%S')}_{reason}.jpg"
+    cv2.imwrite(filename, pic)  # Save image to file
+
+# Main program starts here
+print("Monitoring started. Press CTRL+C to stop.")  # Instructions
+last_active = time.time()  # Remember when we last saw activity
+
+try:
+    # This loop runs forever until we stop it:
+    while True:
+        current_pic = take_picture()  # Take new screenshot
+        
+        # Check if screen changed significantly:
+        if check_difference(current_pic, last_pic):
+            last_active = time.time()  # Update last active time
+            save_pic(current_pic, "change")  # Save evidence
+            save_alert("Screen changed")  # Record alert
+            last_pic = current_pic  # Remember this screenshot
+        
+        # Check if too much time passed without changes:
+        if time.time() - last_active > 30:  # If 30 seconds inactive
+            save_alert("No activity for 30 seconds")
+            last_active = time.time()  # Reset timer
+        
+        time.sleep(CHECK_EVERY)  # Wait before checking again
+
+except KeyboardInterrupt:  # If user presses CTRL+C
+    print("\nStopping monitor...")
+
+# After stopping, save all alerts to a report file:
+with open(f"{FOLDER}/report.txt", "w") as f:  # Open file for writing
+    f.write("\n".join(alerts))  # Combine alerts with newlines between them
+print(f"Report saved to {FOLDER}/report.txt")  # Tell user where report is
