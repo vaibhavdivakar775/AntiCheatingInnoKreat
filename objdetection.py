@@ -44,13 +44,12 @@ while True:
     # Run mobile detection
     processed_frame, detected = process_mobile_detection(frame)
 
-    # Show the frame
+    # Shows the frame
     cv2.imshow("Mobile Detection", processed_frame)
 
-    # Exit on 'q' key
+    # Exit on pressing q 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# Cleanup
 cap.release()
 cv2.destroyAllWindows()
