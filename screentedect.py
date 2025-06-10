@@ -47,7 +47,7 @@ def check_difference(new, old):
     total = gray.shape[0] * gray.shape[1]  # height × width
     
     # Return True if more than 1% of pixels changed:
-    return changed/total > 0.01
+    return changed/total > 0.03
 
 def save_alert(what_happened):
     """Record when something important happens"""
