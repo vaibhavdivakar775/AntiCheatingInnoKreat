@@ -1,0 +1,68 @@
+import cv2
+import pyautogui
+import time
+import os
+from datetime import datetime
+import numpy as np
+import win32gui  # For Windows (use `pyobjc` + `AppKit` for macOS)
+
+VIOLATION_FOLDER = "violation_screenshots"
+os.makedirs(VIOLATION_FOLDER, exist_ok=True)
+
+# Settings
+CHECK_EVERY = 2  # Seconds between checks
+FOLDER = "exam_logs"
+EXAM_WINDOW_TITLE = "Online Exam Monitoring"
+
+os.makedirs(FOLDER, exist_ok=True)
+
+def take_screenshot():
+    return cv2.cvtColor(np.array(pyautogui.screenshot()), cv2.COLOR_RGB2BGR)
+
+def detect_changes(new_img, old_img, threshold=0.01):
+    if old_img is None: return True
+    diff = cv2.absdiff(new_img, old_img)
+    gray = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
+    _, thresh = cv2.threshold(gray, 25, 255, cv2.THRESH_BINARY)
+    return cv2.countNonZero(thresh) / (gray.shape[0] * gray.shape[1]) > threshold
+
+def is_exam_active():
+    return EXAM_WINDOW_TITLE in win32gui.GetWindowText(win32gui.GetForegroundWindow())
+
+def main():
+    last_img = None
+    last_active = time.time()
+    alerts = []
+
+    print("Monitoring started. Press CTRL+C to stop.")
+    try:
+        while True:
+            current_img = take_screenshot()
+            
+            # Check if user switched away from exam
+            if not is_exam_active():
+                timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+                cv2.imwrite(f"{VIOLATION_FOLDER}/{timestamp}_window_switch.jpg", current_img)
+                alerts.append(f"{datetime.now()} - Switched from exam window")
+
+            
+            # Detect screen changes (typing/activity)
+            if detect_changes(current_img, last_img):
+                last_active = time.time()
+                last_img = current_img
+            
+            # Detect inactivity
+            if time.time() - last_active > 30:
+                alerts.append(f"{datetime.now()} - 30s inactivity")
+                timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+                cv2.imwrite(f"{VIOLATION_FOLDER}/{timestamp}_inactivity.jpg", current_img)
+
+            
+            time.sleep(CHECK_EVERY)
+    except KeyboardInterrupt:
+        with open(f"{FOLDER}/report.txt", "w") as f:
+            f.write("\n".join(alerts))
+        print("Report saved to exam_logs/report.txt")
+
+if __name__ == "__main__":
+    main()
