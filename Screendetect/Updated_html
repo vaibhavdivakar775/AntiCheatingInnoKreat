@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam Monitoring</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        #log { white-space: pre-line; border: 1px solid #ccc; padding: 10px; height: 200px; overflow-y: scroll; }
+    </style>
+</head>
+<body>
+
+<h2>Online Exam Monitoring</h2>
+<p>Status: <span id="status">Monitoring...</span></p>
+<p><button onclick="goFullscreen()">Enter Fullscreen</button></p>
+<h3>Log</h3>
+<div id="log"></div>
+
+<script>
+let logBox = document.getElementById("log");
+let lastActivity = Date.now();
+let log = [];
+
+function logEvent(msg) {
+    let time = new Date().toLocaleTimeString();
+    let entry = `[${time}] ${msg}`;
+    log.push(entry);
+    logBox.textContent += entry + '\n';
+    console.log(entry);
+}
+
+// Inactivity detection (30s)
+setInterval(() => {
+    if (Date.now() - lastActivity > 30000) {
+        logEvent("⚠️ No activity for 30 seconds");
+        lastActivity = Date.now(); // Reset to avoid spam
+    }
+}, 5000);
+
+["mousemove", "keydown", "click"].forEach(evt =>
+    document.addEventListener(evt, () => lastActivity = Date.now())
+);
+
+// Tab switch / window blur
+window.onblur = () => logEvent("⚠️ Tab or window switch detected");
+window.onfocus = () => logEvent("✅ User returned to tab");
+
+// Fullscreen enforcement
+document.addEventListener("fullscreenchange", () => {
+    if (!document.fullscreenElement) {
+        logEvent("⚠️ Fullscreen exited");
+    }
+});
+
+function goFullscreen() {
+    document.documentElement.requestFullscreen();
+}
+
+// Webcam check (just triggers webcam prompt for now)
+navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+        logEvent("✅ Webcam access granted");
+        stream.getTracks().forEach(track => track.stop()); // Turn off after test
+    })
+    .catch(() => logEvent("❌ Webcam access denied"));
+
+</script>
+
+</body>
+</html>
