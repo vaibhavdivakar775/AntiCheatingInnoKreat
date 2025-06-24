@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exam Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f6f8;
+            margin: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .report-meta {
+            margin-bottom: 2rem;
+        }
+
+        .event-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .event-card {
+            background: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .timestamp {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .message {
+            font-weight: 500;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Exam Report</h1>
+    <div class="report-meta" id="reportContent"></div>
+    <div class="event-container" id="eventList"></div>
+    <button onclick="goHome()"> Go Back to Home</button>
+
+    <script>
+        function formatTimestamp(ts) {
+            const d = new Date(ts);
+            return d.toLocaleTimeString(); // or .toLocaleTimeString() for time only
+        }
+
+        function loadReport() {
+            const report = JSON.parse(localStorage.getItem("examReport"));
+            const reportDiv = document.getElementById("reportContent");
+            const eventsDiv = document.getElementById("eventList");
+
+            if (!report) {
+                reportDiv.innerHTML = "<p>No report found.</p>";
+                return;
+            }
+
+            reportDiv.innerHTML = `
+                <p><strong>Exam ID:</strong> ${report.exam_id}</p>
+                <p><strong>Start Time:</strong> ${report.start_time}</p>
+                <p><strong>End Time:</strong> ${report.end_time}</p>
+                <h3>Detected Events:</h3>
+            `;
+
+            eventsDiv.innerHTML = report.events.map(event => {
+                const ts = formatTimestamp(event.timestamp);
+                let msg = "Unknown event";
+
+                if (event.message) {
+                    msg = event.message;
+                } else if (event.reason) {
+                    msg = event.reason.replaceAll("_", " ").toUpperCase();
+                } else if (event.type === "face_analysis") {
+                    msg = `EAR: ${event.eye_aspect_ratio}, Blinks: ${event.blink_count}`;
+                }
+
+                return `
+                    <div class="event-card">
+                        <div class="timestamp">${ts}</div>
+                        <div class="message">${msg}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function goHome() {
+            localStorage.removeItem("examReport");
+            window.location.href = "/";
+        }
+
+        window.onload = loadReport;
+    </script>
+</body>
+</html>
