@@ -1,0 +1,79 @@
+from flask import Flask, request, jsonify
+import os
+import uuid
+from datetime import datetime
+
+app = Flask(__name__)
+LOG_FOLDER = "exam_logs"
+os.makedirs(LOG_FOLDER, exist_ok=True)
+
+# Utility
+def get_exam_path(exam_id, filename):
+    return os.path.join(LOG_FOLDER, f"{exam_id}_{filename}")
+
+@app.route("/start_exam", methods=["POST"])
+def start_exam():
+    exam_id = str(uuid.uuid4())
+    with open(get_exam_path(exam_id, "events.txt"), "w") as f:
+        f.write(f"[{datetime.now()}] ✅ Exam started\n")
+    return jsonify({"exam_id": exam_id})
+
+@app.route("/upload_frame", methods=["POST"])
+def upload_frame():
+    data = request.get_json()
+    image_data = data["image"].split(",")[1]  # remove base64 header
+    filename = get_exam_path(data["exam_id"], f"{data['timestamp']}.jpg")
+    with open(filename, "wb") as f:
+        f.write(bytes.fromhex(image_data.encode("utf-8").hex()))  # base64 decode
+    return jsonify({"status": "frame received"})
+
+@app.route("/upload_audio", methods=["POST"])
+def upload_audio():
+    exam_id = request.form["exam_id"]
+    timestamp = request.form["timestamp"]
+    audio = request.files["audio"]
+    filename = get_exam_path(exam_id, f"{timestamp}.webm")
+    audio.save(filename)
+    return jsonify({"status": "audio received"})
+
+@app.route("/log_event", methods=["POST"])
+def log_event():
+    data = request.get_json()
+    exam_id = data["exam_id"]
+    log_line = f"[{datetime.fromtimestamp(data['timestamp']/1000)}] {data['message']}\n"
+    with open(get_exam_path(exam_id, "events.txt"), "a") as f:
+        f.write(log_line)
+    return jsonify({"status": "event logged"})
+
+@app.route("/log_event_batch", methods=["POST"])
+def log_event_batch():
+    data = request.get_json()
+    exam_id = data["exam_id"]
+    with open(get_exam_path(exam_id, "events.txt"), "a") as f:
+        for event in data["events"]:
+            ts = datetime.fromtimestamp(event["timestamp"] / 1000)
+            f.write(f"[{ts}] {event['message']}\n")
+    return jsonify({"status": "batch logged"})
+
+@app.route("/log_ip", methods=["POST"])
+def log_ip():
+    data = request.get_json()
+    with open(get_exam_path(data["exam_id"], "ip.txt"), "w") as f:
+        f.write(f"{data['ip']}\n")
+    return jsonify({"status": "ip logged"})
+
+@app.route("/end_exam", methods=["POST"])
+def end_exam():
+    data = request.get_json()
+    exam_id = data["exam_id"]
+    with open(get_exam_path(exam_id, "events.txt"), "a") as f:
+        f.write(f"[{datetime.now()}] 🛑 Exam ended\n")
+
+    # Generate summary report
+    with open(get_exam_path(exam_id, "events.txt")) as f:
+        events = [line.strip() for line in f.readlines()]
+
+    return jsonify({"exam_id": exam_id, "events": events})
+
+if __name__ == "__main__":
+    app.run(debug=True)
