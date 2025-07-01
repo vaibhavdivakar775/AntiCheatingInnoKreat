@@ -1,0 +1,62 @@
+{
+  "exam_id": "4964b891-5950-4f3a-8476-6aa9ad6d4125",
+  "start_time": "2025-06-29T23:57:24.651286",
+  "end_time": "2025-06-29T23:57:43.057779",
+  "events": [
+    {
+      "timestamp": 1751221644656,
+      "type": "log_event",
+      "message": "\u2705 Exam started, fullscreen enforced"
+    },
+    {
+      "timestamp": 1751221647469,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89287, Lng 77.61062, \u00b180m"
+    },
+    {
+      "timestamp": 1751221647469,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89287, Lng 77.61062, \u00b180m"
+    },
+    {
+      "timestamp": 1751221649586,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\4964b891-5950-4f3a-8476-6aa9ad6d4125\\face_not_found_5dba762d528f464dab27f99144dd89e4.jpg"
+    },
+    {
+      "timestamp": 1751221649586,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\4964b891-5950-4f3a-8476-6aa9ad6d4125\\looking_away_2bee2f32e53e473f8663d7db1f1e2ddf.jpg"
+    },
+    {
+      "timestamp": 1751221654594,
+      "type": "object_detection",
+      "message": "Earphone detected with 0.56 confidence",
+      "label": "Earphone",
+      "confidence": 0.56,
+      "evidence_path": "captured_images\\4964b891-5950-4f3a-8476-6aa9ad6d4125\\Earphone_ce99df962c804a7b8642e4464ed9734f.jpg"
+    },
+    {
+      "timestamp": 1751221654594,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\4964b891-5950-4f3a-8476-6aa9ad6d4125\\looking_away_c8b9d3d294734fc89524578dcf8aa3cb.jpg"
+    },
+    {
+      "timestamp": 1751221659668,
+      "type": "object_detection",
+      "message": "Earphone detected with 0.64 confidence",
+      "label": "Earphone",
+      "confidence": 0.64,
+      "evidence_path": "captured_images\\4964b891-5950-4f3a-8476-6aa9ad6d4125\\Earphone_e6347fb8bd394a67971a019d58f8e19f.jpg"
+    },
+    {
+      "timestamp": 1751221659668,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\4964b891-5950-4f3a-8476-6aa9ad6d4125\\looking_away_d8ecdda3ba174815b3dfe10a755d4e40.jpg"
+    }
+  ]
+}

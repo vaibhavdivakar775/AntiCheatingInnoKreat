@@ -1,0 +1,121 @@
+{
+  "exam_id": "c6c1035f-582a-4617-8187-583a84161b25",
+  "start_time": "2025-06-27T02:29:45.709315",
+  "end_time": "2025-06-27T02:31:43.093343",
+  "events": [
+    {
+      "timestamp": 1750971590749,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_a292dfa0ce814bd48c08a6212f375252.jpg"
+    },
+    {
+      "timestamp": 1750971590749,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_ed498441c3654ae6b4d1126b7580def9.jpg"
+    },
+    {
+      "timestamp": 1750971600704,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_f82ab30f6257476ea394f034cc4d7857.jpg"
+    },
+    {
+      "timestamp": 1750971605711,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_88353e01138c4fa99a71c41843794290.jpg"
+    },
+    {
+      "timestamp": 1750971610710,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_abb5362536b94a77b0153ee641a60e3e.jpg"
+    },
+    {
+      "timestamp": 1750971620706,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_bc5dd02d23144cc7891892496b4e1735.jpg"
+    },
+    {
+      "timestamp": 1750971625709,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_eb7f57e9556647d6a3d122295b236d22.jpg"
+    },
+    {
+      "timestamp": 1750971630728,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_688920d4a2fc4586a3b84ef1236c04ce.jpg"
+    },
+    {
+      "timestamp": 1750971635736,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_766b80649bd34798b79276cff01f6a73.jpg"
+    },
+    {
+      "timestamp": 1750971645708,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_7704a9cf2dbc4865a600842393030fad.jpg"
+    },
+    {
+      "timestamp": 1750971650715,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_374e6d15e1d5433e8a7377292f745bfd.jpg"
+    },
+    {
+      "timestamp": 1750971655725,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_1b29258b792c41b9b396c7cc69325d51.jpg"
+    },
+    {
+      "timestamp": 1750971660730,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_dbf96704c14a4c6fb05231b554852a08.jpg"
+    },
+    {
+      "timestamp": 1750971670712,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_7db83f20bb194a06bf0d4fad4a52aedc.jpg"
+    },
+    {
+      "timestamp": 1750971675726,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_342c7a13f1a744fd9d106c5e9b775c32.jpg"
+    },
+    {
+      "timestamp": 1750971680732,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_5cf33e2aafb74f00b875668a2c6fb6d2.jpg"
+    },
+    {
+      "timestamp": 1750971690700,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_a21e3995b6cf415fbb2268972b72b3af.jpg"
+    },
+    {
+      "timestamp": 1750971695718,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_aaa9c44d17644a9ab188f20d65d80c63.jpg"
+    },
+    {
+      "timestamp": 1750971700716,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_aadda5e187ad47b7a985826f31726e03.jpg"
+    }
+  ]
+}

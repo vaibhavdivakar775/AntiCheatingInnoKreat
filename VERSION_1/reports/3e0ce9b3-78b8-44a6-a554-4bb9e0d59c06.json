@@ -1,0 +1,27 @@
+{
+  "exam_id": "3e0ce9b3-78b8-44a6-a554-4bb9e0d59c06",
+  "start_time": "2025-06-29T23:32:13.572395",
+  "end_time": "2025-06-29T23:32:17.434048",
+  "events": [
+    {
+      "timestamp": 1751220133580,
+      "type": "log_event",
+      "message": "\u2705 Exam started, fullscreen enforced"
+    },
+    {
+      "timestamp": 1751220134669,
+      "type": "log_event",
+      "message": "\u26a0\ufe0f Fullscreen exited during exam"
+    },
+    {
+      "timestamp": 1751220136395,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89282, Lng 77.61072, \u00b177m"
+    },
+    {
+      "timestamp": 1751220136395,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89282, Lng 77.61072, \u00b177m"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "exam_id": "928ef338-fdb4-4d57-8a2a-d184676ffcae",
+  "start_time": "2025-07-01T07:50:05.288626",
+  "end_time": "2025-07-01T07:50:10.072733",
+  "events": [
+    {
+      "timestamp": 1751336405537,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 17.39484, Lng 78.36292, \u00b1178m"
+    },
+    {
+      "timestamp": 1751336405538,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 17.39484, Lng 78.36292, \u00b1178m"
+    }
+  ]
+}

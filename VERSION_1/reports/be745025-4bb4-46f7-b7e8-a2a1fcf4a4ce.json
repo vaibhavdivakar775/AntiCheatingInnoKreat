@@ -1,0 +1,29 @@
+{
+  "exam_id": "be745025-4bb4-46f7-b7e8-a2a1fcf4a4ce",
+  "start_time": "2025-06-27T09:02:14.946320",
+  "end_time": "2025-06-27T09:03:15.716306",
+  "events": [
+    {
+      "timestamp": 1750995169939,
+      "type": "object_detection",
+      "message": "Mobile_phone detected with 0.71 confidence",
+      "label": "Mobile_phone",
+      "confidence": 0.71,
+      "evidence_path": "captured_images\\Mobile_phone_58d916d9dbd042d894b3354b6b37e282.jpg"
+    },
+    {
+      "timestamp": 1750995189949,
+      "type": "object_detection",
+      "message": "Mobile_phone detected with 0.67 confidence",
+      "label": "Mobile_phone",
+      "confidence": 0.67,
+      "evidence_path": "captured_images\\Mobile_phone_ea6bd36400b44febaef97a0fbb28ba57.jpg"
+    },
+    {
+      "timestamp": 1750995194970,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_4e6091e4924644bd8af69d5aebded0f0.jpg"
+    }
+  ]
+}

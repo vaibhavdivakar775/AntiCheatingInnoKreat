@@ -1,0 +1,36 @@
+{
+  "exam_id": "0ec6f03b-5424-44eb-bd5f-cbfd204c2776",
+  "start_time": "2025-07-01T07:58:38.212264",
+  "end_time": "2025-07-01T07:59:38.396628",
+  "events": [
+    {
+      "timestamp": 1751336921230,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 17.39452, Lng 78.36297, \u00b192m"
+    },
+    {
+      "timestamp": 1751336921231,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 17.39452, Lng 78.36297, \u00b192m"
+    },
+    {
+      "timestamp": "2025-07-01 07:58:59",
+      "message": "Candidate is speaking (Score: 0.34)"
+    },
+    {
+      "timestamp": 1751336949798,
+      "type": "log_event",
+      "message": "Tab or window switch detected"
+    },
+    {
+      "timestamp": "2025-07-01 07:59:29",
+      "message": "Candidate is not speaking (Score: 0.20)"
+    },
+    {
+      "timestamp": 1751336973285,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\0ec6f03b-5424-44eb-bd5f-cbfd204c2776\\looking_away_b1a063e79b1e49638fb5f906c9aeab5a.jpg"
+    }
+  ]
+}

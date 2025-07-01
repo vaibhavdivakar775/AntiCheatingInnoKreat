@@ -1,0 +1,23 @@
+{
+  "exam_id": "e8e959fe-ac8c-4d38-9d0d-f9a797267435",
+  "start_time": "2025-06-27T09:18:45.771391",
+  "end_time": "2025-06-27T09:19:43.119861",
+  "events": [
+    {
+      "timestamp": "2025-06-27 09:19:09",
+      "message": "Candidate is speaking (Score: 0.71)"
+    },
+    {
+      "timestamp": 1750996165759,
+      "type": "object_detection",
+      "message": "Earphone detected with 0.41 confidence",
+      "label": "Earphone",
+      "confidence": 0.41,
+      "evidence_path": "captured_images\\Earphone_9fc4d016b3d04c2db5ee3c3565531075.jpg"
+    },
+    {
+      "timestamp": "2025-06-27 09:19:38",
+      "message": "Candidate is speaking (Score: 0.64)"
+    }
+  ]
+}

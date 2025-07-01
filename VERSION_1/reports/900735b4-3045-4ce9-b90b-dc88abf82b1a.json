@@ -1,0 +1,73 @@
+{
+  "exam_id": "900735b4-3045-4ce9-b90b-dc88abf82b1a",
+  "start_time": "2025-06-27T02:12:11.795645",
+  "end_time": "2025-06-27T02:13:35.654639",
+  "events": [
+    {
+      "timestamp": 1750970536984,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_69f67c1bd5b446159193a49182b55b06.jpg"
+    },
+    {
+      "timestamp": 1750970546792,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_d7721c4b75734a4395f42d3f4eedd31a.jpg"
+    },
+    {
+      "timestamp": 1750970551797,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_9704139a70a047fb9035ceff56a3e861.jpg"
+    },
+    {
+      "timestamp": 1750970556826,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_d0c95292446a4d6894f0ec5fbdfbcd98.jpg"
+    },
+    {
+      "timestamp": 1750970566794,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_39e6b100a8314dc09601a3eaf88f7910.jpg"
+    },
+    {
+      "timestamp": 1750970571854,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_b5d97df297eb4a159d1e93e22fbaed02.jpg"
+    },
+    {
+      "timestamp": 1750970581796,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_cf40837867104af7a24e658a8d535a7a.jpg"
+    },
+    {
+      "timestamp": 1750970586844,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_24f959aa4c58494d85cc920a0b09eb64.jpg"
+    },
+    {
+      "timestamp": 1750970591852,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_91e807a1d5d844598f12889c32e95775.jpg"
+    },
+    {
+      "timestamp": 1750970601790,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_6f741e79ecc14bc4aeca10e934a6a90c.jpg"
+    },
+    {
+      "timestamp": 1750970606851,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_e895a183844f49728ff9954d41165c00.jpg"
+    }
+  ]
+}

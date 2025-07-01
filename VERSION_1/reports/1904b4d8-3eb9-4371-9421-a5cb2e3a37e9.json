@@ -1,0 +1,57 @@
+{
+  "exam_id": "1904b4d8-3eb9-4371-9421-a5cb2e3a37e9",
+  "start_time": "2025-06-27T17:17:48.528936",
+  "end_time": "2025-06-27T17:19:00.500465",
+  "events": [
+    {
+      "timestamp": 1751024883526,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_ddd9726e339e4e39accecf49ebc28a22.jpg"
+    },
+    {
+      "timestamp": 1751024888527,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_e8dbcd114148496fbd7e53bfa930eaed.jpg"
+    },
+    {
+      "timestamp": 1751024888527,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_9dea399a45ec48d5bdfb3c3e35cb9f56.jpg"
+    },
+    {
+      "timestamp": "2025-06-27 17:18:16",
+      "message": "Candidate is speaking (Score: 0.65)"
+    },
+    {
+      "timestamp": 1751024903528,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_007858167b844cd6875db1fbc1290293.jpg"
+    },
+    {
+      "timestamp": 1751024908527,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_4599978803044a1cbe689fbf11efae17.jpg"
+    },
+    {
+      "timestamp": 1751024918558,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_f5291966853f43e3a988b41e08547e49.jpg"
+    },
+    {
+      "timestamp": "2025-06-27 17:18:41",
+      "message": "Candidate is speaking (Score: 0.44)"
+    },
+    {
+      "timestamp": 1751024928529,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_6416e4d8f2e246d3808ae9a77df93061.jpg"
+    }
+  ]
+}

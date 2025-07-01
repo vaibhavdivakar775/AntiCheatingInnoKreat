@@ -1,0 +1,15 @@
+{
+  "exam_id": "d56f4900-9d18-4153-bab8-bbed417f6d84",
+  "start_time": "2025-06-29T23:24:11.122724",
+  "end_time": "2025-06-29T23:25:30.694216",
+  "events": [
+    {
+      "timestamp": "2025-06-29 23:24:36",
+      "message": "Candidate is not speaking (Score: -0.00)"
+    },
+    {
+      "timestamp": "2025-06-29 23:25:03",
+      "message": "Candidate is not speaking (Score: -0.07)"
+    }
+  ]
+}

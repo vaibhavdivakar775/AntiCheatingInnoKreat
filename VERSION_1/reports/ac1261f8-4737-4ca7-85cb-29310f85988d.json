@@ -1,0 +1,33 @@
+{
+  "exam_id": "ac1261f8-4737-4ca7-85cb-29310f85988d",
+  "start_time": "2025-07-01T07:48:11.710051",
+  "end_time": "2025-07-01T07:48:24.025915",
+  "events": [
+    {
+      "timestamp": 1751336294804,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 17.39457, Lng 78.36298, \u00b182m"
+    },
+    {
+      "timestamp": 1751336294805,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 17.39457, Lng 78.36298, \u00b182m"
+    },
+    {
+      "timestamp": 1751336296598,
+      "type": "object_detection",
+      "message": "Mobile_phone detected with 0.84 confidence",
+      "label": "Mobile_phone",
+      "confidence": 0.84,
+      "evidence_path": "captured_images\\ac1261f8-4737-4ca7-85cb-29310f85988d\\Mobile_phone_92c0d1bc5282450baf4b1daf9c6160f6.jpg"
+    },
+    {
+      "timestamp": 1751336301736,
+      "type": "object_detection",
+      "message": "Mobile_phone detected with 0.78 confidence",
+      "label": "Mobile_phone",
+      "confidence": 0.78,
+      "evidence_path": "captured_images\\ac1261f8-4737-4ca7-85cb-29310f85988d\\Mobile_phone_0618d556a52642ffaabaed6468f4c6a6.jpg"
+    }
+  ]
+}

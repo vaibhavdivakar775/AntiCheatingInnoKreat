@@ -1,0 +1,27 @@
+{
+  "exam_id": "709ed28b-f5b1-4a30-8af9-7d4a5e4f181d",
+  "start_time": "2025-06-30T10:53:44.698955",
+  "end_time": "2025-06-30T10:54:14.299165",
+  "events": [
+    {
+      "timestamp": 1751261036580,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89306, Lng 77.61041, \u00b175m"
+    },
+    {
+      "timestamp": 1751261036580,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89306, Lng 77.61041, \u00b175m"
+    },
+    {
+      "timestamp": 1751261041911,
+      "type": "log_event",
+      "message": "Fullscreen exited during exam"
+    },
+    {
+      "timestamp": 1751261043399,
+      "type": "log_event",
+      "message": "Tab or window switch detected"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "exam_id": "19c6001c-71ea-4078-ab79-d8e184e7dec0",
+  "start_time": "2025-06-30T10:54:54.828880",
+  "end_time": "2025-06-30T10:55:42.973393",
+  "events": [
+    {
+      "timestamp": 1751261097960,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89299, Lng 77.61043, \u00b186m"
+    },
+    {
+      "timestamp": 1751261097961,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89299, Lng 77.61043, \u00b186m"
+    },
+    {
+      "timestamp": "2025-06-30 10:55:20",
+      "message": "Candidate is speaking (Score: 0.36)"
+    },
+    {
+      "timestamp": 1751261128294,
+      "type": "log_event",
+      "message": "No activity detected for more than 30 seconds"
+    }
+  ]
+}
