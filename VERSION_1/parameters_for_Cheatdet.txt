@@ -1,0 +1,28 @@
+  objects:-  
+    'Book': 0.2,
+    'Earphone': 0.4,
+    'Mobile_phone': 0.5,
+    'cap': 0.85,
+    'headset': 0.8,
+    'smart_watch': 0.45,
+    'sunglasses': 1.0
+
+eyes:-
+SUSPICIOUS BLINKING DETECTED
+"SUSPICIOUS_EYE_MOVEMENT"
+LOOKING_AWAY_FROM_SCREEN
+face:-
+MULTIPLE PERSONS IN FRAME
+FACE NOT FOUND
+
+Voice:-
+is the voice matching with the registered voice
+
+Screen detection :-
+multiple displays
+switching tabs
+inactivity
+full screen enforcing
+extended monitor detection 
+geolocation
+
