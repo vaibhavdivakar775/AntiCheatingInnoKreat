@@ -1,0 +1,39 @@
+{
+  "exam_id": "111a4952-b0b6-45eb-8d99-a3b77586ab06",
+  "start_time": "2025-06-27T09:41:55.947566",
+  "end_time": "2025-06-27T09:43:32.324038",
+  "events": [
+    {
+      "timestamp": 1750997530981,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_b80db8f0cdbf4624b72890a25136e67c.jpg"
+    },
+    {
+      "timestamp": 1750997530981,
+      "type": "object_detection",
+      "message": "Mobile_phone detected with 0.86 confidence",
+      "label": "Mobile_phone",
+      "confidence": 0.86,
+      "evidence_path": "captured_images\\Mobile_phone_7d9fae5cefa945bda5458b23f6841665.jpg"
+    },
+    {
+      "timestamp": "2025-06-27 09:42:24",
+      "message": "Candidate is speaking (Score: 0.57)"
+    },
+    {
+      "timestamp": "2025-06-27 09:42:51",
+      "message": "Candidate is speaking (Score: 0.28)"
+    },
+    {
+      "timestamp": "2025-06-27 09:43:21",
+      "message": "Candidate is speaking (Score: 0.72)"
+    },
+    {
+      "timestamp": 1750997601115,
+      "type": "violation",
+      "reason": "SUSPICIOUS_EYE_MOVEMENT",
+      "evidence_path": "captured_images\\eye_move_0bf9bd7eb9fa4051aed1f7c05d65898c.jpg"
+    }
+  ]
+}

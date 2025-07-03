@@ -1,0 +1,72 @@
+{
+  "exam_id": "116ebced-3bd7-45e1-bca8-a141aa078eb1",
+  "start_time": "2025-06-29T23:53:33.565715",
+  "end_time": "2025-06-29T23:54:02.340664",
+  "events": [
+    {
+      "timestamp": 1751221413616,
+      "type": "log_event",
+      "message": "\u2705 Exam started, fullscreen enforced"
+    },
+    {
+      "timestamp": 1751221416632,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89295, Lng 77.61068, \u00b168m"
+    },
+    {
+      "timestamp": 1751221416633,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89295, Lng 77.61068, \u00b168m"
+    },
+    {
+      "timestamp": 1751221418498,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\116ebced-3bd7-45e1-bca8-a141aa078eb1\\face_not_found_4aa01c1dbbcb48e0a08f56ffa01e0785.jpg"
+    },
+    {
+      "timestamp": 1751221423625,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\116ebced-3bd7-45e1-bca8-a141aa078eb1\\looking_away_5eb71f2b5b7c4923b1cbd9b9e1e59e3b.jpg"
+    },
+    {
+      "timestamp": 1751221433477,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\116ebced-3bd7-45e1-bca8-a141aa078eb1\\face_not_found_f1b16698bb71410c8a03571d2a1d1f3c.jpg"
+    },
+    {
+      "timestamp": 1751221433477,
+      "type": "object_detection",
+      "message": "Earphone detected with 0.48 confidence",
+      "label": "Earphone",
+      "confidence": 0.48,
+      "evidence_path": "captured_images\\Earphone_f1f705b89cee4f8b86fd9f55b03a4e69.jpg"
+    },
+    {
+      "timestamp": 1751221433477,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\116ebced-3bd7-45e1-bca8-a141aa078eb1\\looking_away_13ce78c9044d47b8a1c94e5fb826b567.jpg"
+    },
+    {
+      "timestamp": "2025-06-29 23:53:59",
+      "message": "Candidate is not speaking (Score: 0.03)"
+    },
+    {
+      "timestamp": 1751221438482,
+      "type": "object_detection",
+      "message": "Earphone detected with 0.55 confidence",
+      "label": "Earphone",
+      "confidence": 0.55,
+      "evidence_path": "captured_images\\Earphone_ce2cac8b83994bfdb3e95557afe7d16d.jpg"
+    },
+    {
+      "timestamp": 1751221438482,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\116ebced-3bd7-45e1-bca8-a141aa078eb1\\looking_away_4e754832277645f7a3e91a5fd02f186b.jpg"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "exam_id": "d4bb68a2-5f20-4405-8442-5d79c64fc7e4",
+  "start_time": "2025-06-27T09:30:26.037263",
+  "end_time": "2025-06-27T09:31:23.390536",
+  "events": [
+    {
+      "timestamp": 1750996830920,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\face_not_found_a855a2c5f32a419ba232d0a0dfcaaf73.jpg"
+    },
+    {
+      "timestamp": 1750996845903,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_bad4c16f77aa4df3bcd5a53e4681eaa9.jpg"
+    },
+    {
+      "timestamp": "2025-06-27 09:30:49",
+      "message": "Candidate is speaking (Score: 0.25)"
+    },
+    {
+      "timestamp": 1750996851058,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_ea6953549e74485daaf775958f935cc6.jpg"
+    },
+    {
+      "timestamp": 1750996851058,
+      "type": "object_detection",
+      "message": "Mobile_phone detected with 0.52 confidence",
+      "label": "Mobile_phone",
+      "confidence": 0.52,
+      "evidence_path": "captured_images\\Mobile_phone_3aa66db958454616a404d2139c960930.jpg"
+    },
+    {
+      "timestamp": 1750996851058,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_d9997d1f97d3442b8ff763b7653d8dad.jpg"
+    },
+    {
+      "timestamp": 1750996856055,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_0160407e5504498d9289adab6ee91207.jpg"
+    },
+    {
+      "timestamp": 1750996856055,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_fe2be669df9e4d1386aa954689fef38c.jpg"
+    },
+    {
+      "timestamp": 1750996861062,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_c139b59f1ccc418a873e60f0db69821a.jpg"
+    },
+    {
+      "timestamp": 1750996861062,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_4ef190a7117c4b219bb95bf7572b30f3.jpg"
+    },
+    {
+      "timestamp": 1750996870908,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_dccc4fcdcc7c42c6b94ec4ac5cd9c508.jpg"
+    },
+    {
+      "timestamp": 1750996870908,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_9d3b0ec0dffe4dbbac7535f0ca1afa0c.jpg"
+    },
+    {
+      "timestamp": "2025-06-27 09:31:18",
+      "message": "Candidate is speaking (Score: 0.29)"
+    }
+  ]
+}

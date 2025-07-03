@@ -1,0 +1,23 @@
+{
+  "exam_id": "47fbd7fb-5051-4aea-86a2-e32caf8e192f",
+  "start_time": "2025-06-27T09:33:10.341740",
+  "end_time": "2025-06-27T09:33:42.580102",
+  "events": [
+    {
+      "timestamp": 1750997000359,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_dcdffaa0b131431792af5353365a8d66.jpg"
+    },
+    {
+      "timestamp": 1750997005362,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_bec5de3c300542dabde78706901669b9.jpg"
+    },
+    {
+      "timestamp": "2025-06-27 09:33:33",
+      "message": "Candidate is speaking (Score: 0.66)"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "exam_id": "0196e4e9-005a-49ef-9108-ba12794ee23e",
+  "start_time": "2025-07-01T08:48:18.803962",
+  "end_time": "2025-07-01T08:48:52.961483",
+  "events": [
+    {
+      "timestamp": 1751339898824,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.87122, Lng 77.59594, \u00b135m"
+    },
+    {
+      "timestamp": 1751339905644,
+      "type": "log_event",
+      "message": "Tab or window switch detected"
+    },
+    {
+      "timestamp": 1751339905646,
+      "type": "log_event",
+      "message": "Fullscreen exited during exam"
+    },
+    {
+      "timestamp": "2025-07-01 08:48:38",
+      "message": "Candidate is speaking (Score: 0.76)"
+    }
+  ]
+}

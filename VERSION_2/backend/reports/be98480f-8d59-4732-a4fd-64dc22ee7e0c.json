@@ -1,0 +1,41 @@
+{
+  "exam_id": "be98480f-8d59-4732-a4fd-64dc22ee7e0c",
+  "start_time": "2025-07-01T08:57:23.485657",
+  "end_time": "2025-07-01T08:58:09.456287",
+  "events": [
+    {
+      "timestamp": 1751340444689,
+      "type": "log_event",
+      "message": "Tab or window switch detected"
+    },
+    {
+      "timestamp": 1751340446243,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.87120, Lng 77.59599, \u00b149m"
+    },
+    {
+      "timestamp": 1751340446243,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.87120, Lng 77.59599, \u00b149m"
+    },
+    {
+      "timestamp": 1751340458861,
+      "type": "log_event",
+      "message": "Tab or window switch detected"
+    },
+    {
+      "timestamp": 1751340458869,
+      "type": "log_event",
+      "message": "Fullscreen exited during exam"
+    },
+    {
+      "timestamp": "2025-07-01 08:57:43",
+      "message": "Candidate is speaking (Score: 0.80)"
+    },
+    {
+      "timestamp": 1751340485930,
+      "type": "log_event",
+      "message": "Tab or window switch detected"
+    }
+  ]
+}

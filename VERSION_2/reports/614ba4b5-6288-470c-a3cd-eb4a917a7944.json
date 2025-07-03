@@ -1,0 +1,44 @@
+{
+  "exam_id": "614ba4b5-6288-470c-a3cd-eb4a917a7944",
+  "start_time": "2025-06-29T23:36:19.084843",
+  "end_time": "2025-06-29T23:36:43.409134",
+  "events": [
+    {
+      "timestamp": 1751220379099,
+      "type": "log_event",
+      "message": "\u2705 Exam started, fullscreen enforced"
+    },
+    {
+      "timestamp": 1751220381831,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89283, Lng 77.61065, \u00b180m"
+    },
+    {
+      "timestamp": 1751220381832,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89283, Lng 77.61065, \u00b180m"
+    },
+    {
+      "timestamp": 1751220384042,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_a4dc7de30c8649859c3edfda770526e6.jpg"
+    },
+    {
+      "timestamp": 1751220389112,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_3560170b9ed84aea9323d2e475bf28a2.jpg"
+    },
+    {
+      "timestamp": 1751220394115,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_5303c25f250a45d497010aba62806a88.jpg"
+    },
+    {
+      "timestamp": "2025-06-29 23:36:41",
+      "message": "Candidate is not speaking (Score: 0.10)"
+    }
+  ]
+}

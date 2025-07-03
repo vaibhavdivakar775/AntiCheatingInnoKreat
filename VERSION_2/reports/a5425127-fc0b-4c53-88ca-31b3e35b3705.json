@@ -1,0 +1,49 @@
+{
+  "exam_id": "a5425127-fc0b-4c53-88ca-31b3e35b3705",
+  "start_time": "2025-06-29T23:32:54.181882",
+  "end_time": "2025-06-29T23:33:05.683386",
+  "events": [
+    {
+      "timestamp": 1751220174194,
+      "type": "log_event",
+      "message": "\u2705 Exam started, fullscreen enforced"
+    },
+    {
+      "timestamp": 1751220176678,
+      "type": "log_event",
+      "message": "\u26a0\ufe0f Fullscreen exited during exam"
+    },
+    {
+      "timestamp": 1751220176952,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89292, Lng 77.61056, \u00b179m"
+    },
+    {
+      "timestamp": 1751220176952,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89292, Lng 77.61056, \u00b179m"
+    },
+    {
+      "timestamp": 1751220177881,
+      "type": "log_event",
+      "message": "\u26a0\ufe0f Tab or window switch detected"
+    },
+    {
+      "timestamp": 1751220179161,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_12fdf6c3abdf49d9b24ef981af179333.jpg"
+    },
+    {
+      "timestamp": 1751220183702,
+      "type": "log_event",
+      "message": "\u2705 User returned to tab"
+    },
+    {
+      "timestamp": 1751220184215,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_4f417fe2cb684bc18d406680936ade45.jpg"
+    }
+  ]
+}

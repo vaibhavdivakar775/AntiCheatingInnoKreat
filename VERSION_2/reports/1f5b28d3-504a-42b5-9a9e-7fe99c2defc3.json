@@ -1,0 +1,112 @@
+{
+  "exam_id": "1f5b28d3-504a-42b5-9a9e-7fe99c2defc3",
+  "start_time": "2025-06-29T23:30:23.157724",
+  "end_time": "2025-06-29T23:31:24.944197",
+  "events": [
+    {
+      "timestamp": 1751220023184,
+      "type": "log_event",
+      "message": "\u2705 Exam started, fullscreen enforced"
+    },
+    {
+      "timestamp": 1751220028158,
+      "type": "log_event",
+      "message": "\u2705 User returned to tab"
+    },
+    {
+      "timestamp": 1751220028001,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_2b92c3f6e7d5469cb8f6221f4c45206a.jpg"
+    },
+    {
+      "timestamp": 1751220030927,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89300, Lng 77.61052, \u00b171m"
+    },
+    {
+      "timestamp": 1751220030927,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.89300, Lng 77.61052, \u00b171m"
+    },
+    {
+      "timestamp": 1751220033197,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_3f9b9c614aff462984747b362b6a1c29.jpg"
+    },
+    {
+      "timestamp": 1751220043201,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_3426415bf64d427aa9dbfd75851ac818.jpg"
+    },
+    {
+      "timestamp": 1751220043201,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_2f540c53ddc84380b0b6415b34be9dd7.jpg"
+    },
+    {
+      "timestamp": "2025-06-29 23:30:45",
+      "message": "Candidate is not speaking (Score: -0.05)"
+    },
+    {
+      "timestamp": 1751220052982,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_8bf3d15951da4517a6c1e663465150b8.jpg"
+    },
+    {
+      "timestamp": 1751220052982,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_ad16316bee7a444bb52fd9d5201978a1.jpg"
+    },
+    {
+      "timestamp": 1751220057985,
+      "type": "violation",
+      "reason": "MULTIPLE PERSONS IN FRAME",
+      "evidence_path": "captured_images\\multi_person_859d92635d874243a1be5738f10e48df.jpg"
+    },
+    {
+      "timestamp": 1751220057985,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_00e2924766e6422291325f0820cfb8a1.jpg"
+    },
+    {
+      "timestamp": 1751220062985,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_9ead581bb968489eb69ce44bf57cdcb1.jpg"
+    },
+    {
+      "timestamp": 1751220066708,
+      "type": "log_event",
+      "message": "\u26a0\ufe0f No activity detected for 30 seconds"
+    },
+    {
+      "timestamp": 1751220068210,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_6caefcd8fa7b4b958db6e8bcecc0d6fa.jpg"
+    },
+    {
+      "timestamp": "2025-06-29 23:31:15",
+      "message": "Candidate is not speaking (Score: 0.19)"
+    },
+    {
+      "timestamp": 1751220077984,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_f3d5c528ddfe4cc9ab14df62391b0bba.jpg"
+    },
+    {
+      "timestamp": 1751220082984,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\looking_away_84482a46e1514f47ad49f81309e8f477.jpg"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "exam_id": "2ac87587-677d-427b-9a85-5b98b48145f3",
+  "start_time": "2025-07-03T09:36:00.465965",
+  "end_time": "2025-07-03T09:36:20.806217",
+  "events": [
+    {
+      "timestamp": 1751515560713,
+      "type": "log_event",
+      "message": "Tab or window switch detected"
+    },
+    {
+      "timestamp": 1751515562917,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.87103, Lng 77.59596, \u00b140m"
+    },
+    {
+      "timestamp": 1751515562917,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 12.87103, Lng 77.59596, \u00b140m"
+    }
+  ]
+}

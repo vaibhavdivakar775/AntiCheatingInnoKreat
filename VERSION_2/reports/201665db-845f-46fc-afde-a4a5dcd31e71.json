@@ -1,0 +1,29 @@
+{
+  "exam_id": "201665db-845f-46fc-afde-a4a5dcd31e71",
+  "start_time": "2025-07-01T07:50:14.275658",
+  "end_time": "2025-07-01T07:50:26.008754",
+  "events": [
+    {
+      "timestamp": 1751336414409,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 17.39466, Lng 78.36304, \u00b184m"
+    },
+    {
+      "timestamp": 1751336414410,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 17.39466, Lng 78.36304, \u00b184m"
+    },
+    {
+      "timestamp": 1751336419193,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\201665db-845f-46fc-afde-a4a5dcd31e71\\face_not_found_7b5567af3211456b82e87b8900038e76.jpg"
+    },
+    {
+      "timestamp": 1751336424293,
+      "type": "violation",
+      "reason": "FACE NOT FOUND",
+      "evidence_path": "captured_images\\201665db-845f-46fc-afde-a4a5dcd31e71\\face_not_found_c0808d0d0a8447a290775df12831a814.jpg"
+    }
+  ]
+}

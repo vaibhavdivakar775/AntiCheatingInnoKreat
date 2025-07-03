@@ -1,0 +1,10 @@
+mediapipe requires python versions lesser than 3.10 (i worked with 3.9.9)
+
+requirements.txt contains all the libraries we need for the entire project  
+
+ffmpeg Must be installed and in PATH of the environment variables ----- must for pydub to work in audiodet.
+
+models/weight/best.pt contains the best trained model for object detection the location of this file will need to be changed in the backend/detection/detection_pipeline
+
+** folder structure should be maintained **
+

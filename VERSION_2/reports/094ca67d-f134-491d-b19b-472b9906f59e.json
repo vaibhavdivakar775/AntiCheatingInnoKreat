@@ -1,0 +1,43 @@
+{
+  "exam_id": "094ca67d-f134-491d-b19b-472b9906f59e",
+  "start_time": "2025-07-01T07:48:30.091868",
+  "end_time": "2025-07-01T07:49:20.627908",
+  "events": [
+    {
+      "timestamp": 1751336310181,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 17.39457, Lng 78.36298, \u00b182m"
+    },
+    {
+      "timestamp": 1751336310182,
+      "type": "log_event",
+      "message": "\ud83c\udf0d Location: Lat 17.39457, Lng 78.36298, \u00b182m"
+    },
+    {
+      "timestamp": "2025-07-01 07:48:56",
+      "message": "Candidate is speaking (Score: 0.35)"
+    },
+    {
+      "timestamp": 1751336345040,
+      "type": "object_detection",
+      "message": "Mobile_phone detected with 0.70 confidence",
+      "label": "Mobile_phone",
+      "confidence": 0.7,
+      "evidence_path": "captured_images\\094ca67d-f134-491d-b19b-472b9906f59e\\Mobile_phone_1d3d3ed68f6841b59313bf55bf6a4175.jpg"
+    },
+    {
+      "timestamp": 1751336350040,
+      "type": "object_detection",
+      "message": "Mobile_phone detected with 0.79 confidence",
+      "label": "Mobile_phone",
+      "confidence": 0.79,
+      "evidence_path": "captured_images\\094ca67d-f134-491d-b19b-472b9906f59e\\Mobile_phone_775d885a56ca456597381d528510f569.jpg"
+    },
+    {
+      "timestamp": 1751336360124,
+      "type": "violation",
+      "reason": "LOOKING_AWAY_FROM_SCREEN",
+      "evidence_path": "captured_images\\094ca67d-f134-491d-b19b-472b9906f59e\\looking_away_091d54076a7c4d48a003916211abcaae.jpg"
+    }
+  ]
+}
