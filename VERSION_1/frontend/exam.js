@@ -11,6 +11,26 @@ let countdownInterval = null;
 let examId = null;
 let lastActivity = Date.now();
 
+// Clipboard monitoring
+["copy", "cut", "paste"].forEach(evt => {
+    document.addEventListener(evt, async (e) => {
+        let clipText = "";
+        if (evt === "paste") {
+            clipText = (e.clipboardData || window.clipboardData).getData('text') || "";
+        } else {
+            try {
+                clipText = await navigator.clipboard.readText();
+            } catch (err) {
+                console.warn("Clipboard read failed:", err);
+                clipText = "[Could not read clipboard]";
+            }
+        }
+
+        const preview = clipText.length > 30 ? clipText.slice(0, 30) + "..." : clipText;
+        logEvent(`${evt.toUpperCase()} detected. Preview: "${preview}"`);
+    });
+});
+
 function logEvent(msg) {
     console.log(`[${new Date().toLocaleTimeString()}] ${msg}`);
     if (examId) {
@@ -37,9 +57,11 @@ setInterval(() => {
 ["mousemove", "keydown", "click"].forEach(evt =>
     document.addEventListener(evt, () => lastActivity = Date.now())
 );
+
+
 // Tab/window switch detection
 window.onblur = () => logEvent("Tab or window switch detected");
-// window.onfocus = () => logEvent("User returned to tab");******************************************
+
 //exit full screen
 document.addEventListener("fullscreenchange", () => {
     if (!document.fullscreenElement) {
