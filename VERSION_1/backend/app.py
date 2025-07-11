@@ -1,4 +1,3 @@
-
 from flask import Flask, request, jsonify, render_template
 import os
 import uuid
@@ -115,7 +114,7 @@ def analyze_frame(frame, timestamp, exam_id=None):
      evidence = save_evidence(frame, "face_not_found", exam_id)
      events.append({
         "timestamp": timestamp,
-        "type": "violation",
+        "type": "warning",
         "reason": "FACE NOT FOUND",
         "evidence_path": evidence         
     })
@@ -123,7 +122,7 @@ def analyze_frame(frame, timestamp, exam_id=None):
      evidence = save_evidence(frame, "multi_person", exam_id)
      events.append({
         "timestamp": timestamp,
-        "type": "violation",
+        "type": "warning",
         "reason": "MULTIPLE PERSONS IN FRAME",
         "evidence_path": evidence        
     })
@@ -149,10 +148,9 @@ def analyze_frame(frame, timestamp, exam_id=None):
 
         events.append({
             "timestamp": timestamp,
-            "type": "object_detection",
+            "type": "object detection",
             "message": f"{label} detected with {conf:.2f} confidence",
             "label": label,
-            "confidence": round(conf, 2),
             "evidence_path": path
         })
 
@@ -174,7 +172,7 @@ def analyze_frame(frame, timestamp, exam_id=None):
                 if eye_movement_count > MAX_EYE_MOVEMENTS:
                     events.append({
                         "timestamp": timestamp,
-                        "type": "violation",
+                        "type": "warning",
                         "reason": "SUSPICIOUS_EYE_MOVEMENT",
                         "evidence_path": save_evidence(face_crop, "eye_move", exam_id)   # <<<
                      })
@@ -187,7 +185,7 @@ def analyze_frame(frame, timestamp, exam_id=None):
         if center[0] < 0.40 or center[0] > 0.60:
             events.append({
                 "timestamp": timestamp,
-                "type": "violation",
+                "type": "warning",
                 "reason": "LOOKING_AWAY_FROM_SCREEN",
                 "evidence_path": save_evidence(face_crop, "looking_away",exam_id)
             })
@@ -205,21 +203,12 @@ def analyze_frame(frame, timestamp, exam_id=None):
                 if total_blinks > 25:
                     events.append({
                         "timestamp": timestamp,
-                        "type": "violation",
+                        "type": "warning",
                         "reason": "SUSPICIOUS BLINKING DETECTED",
                         "evidence_path": save_evidence(face_crop, "blink", exam_id) 
                     })
                     total_blinks = 0
             blink_counter = 0
-# gives continous ratio of eyes and ear ratio
-        # events.append({
-        #     "timestamp": timestamp,
-        #     "type": "face_analysis",
-        #     "eye_aspect_ratio": round(ear, 2),
-        #     "blink_count": total_blinks,
-        #     "eye_center": center.tolist()
-        # })
-
     return events
 
 # Function to clean and preprocess audio
@@ -266,6 +255,7 @@ def process_audio(audio_bytes, fmt, exam_id=None):
         if exam_id and exam_id in SESSIONS:
             SESSIONS[exam_id]["events"].append({
                 "timestamp": timestamp_log,
+                "type": "violation",
                 "message": "Candidate voice not registered. Skipping audio verification."
             })
         return
@@ -273,18 +263,105 @@ def process_audio(audio_bytes, fmt, exam_id=None):
     score, prediction = verifier.verify_files(candidate_voice_path, temp_path)
     score_value = float(score)
 
-    # Log result 
     if exam_id and exam_id in SESSIONS:
-        msg = f"Candidate is {'speaking' if prediction else 'not speaking'} (Score: {score_value:.2f})"
-        SESSIONS[exam_id]["events"].append({
-            "timestamp": timestamp_log,
-            "message": msg
-        })
-        
-    # if prediction:
-    #     print(f"[{timestamp_log}] Candidate is speaking! Score: {score_value:.2f}")
-    # else:
-    #     print(f"[{timestamp_log}] Candidate is not speaking. Score: {score_value:.2f}")
+        if score_value < 0.2:
+            category = "Noise"
+            msg = f"[AUDIO] Silence or background noise detected (Score: {score_value:.2f})"
+        elif score_value < 0.6:
+            category = "unknown Speaker"
+            msg = f"[AUDIO] Voice does NOT match candidate (Score: {score_value:.2f})"
+        else:
+            category = "Candidate speaking"
+            msg = f"[AUDIO] Candidate is speaking (Score: {score_value:.2f})"
+
+    SESSIONS[exam_id]["events"].append({
+        "timestamp": timestamp_log,
+        "type": "voice_event",
+        "category": category,
+        "message": msg
+    })
+
+# summary
+
+def get_summary(exam_id):
+    if exam_id not in SESSIONS:
+        return {"error": "Invalid exam ID"}
+
+    summary = {
+        "total_events": 0,
+        "object_detections": {},
+        "voice_events": {
+            "candidate": 0,
+            "unknown": 0,
+            "noise": 0
+        },
+        "face_warnings": {
+            "face_not_found": 0,
+            "multiple_faces": 0
+        },
+        "eye_warnings": {
+            "looking_away": 0,
+            "suspicious_movement": 0,
+            "blinking_violations": 0
+        },
+        "frontend_violations": {
+            "tab_switches": 0,
+            "fullscreen_exits": 0,
+            "inactivity": 0,
+            "extended_monitor": 0,
+            "geolocation_error": 0
+        }
+    }
+
+    for event in SESSIONS[exam_id]["events"]:
+        summary["total_events"] += 1
+
+        msg = event.get("message", "").lower()
+        reason = event.get("reason", "").lower()
+        category = event.get("category", "").lower()
+        event_type = event.get("type", "").lower()
+        label = event.get("label", "").lower() if "label" in event else ""
+
+        # Object detections
+        if event_type == "object detection":
+            summary["object_detections"][label] = summary["object_detections"].get(label, 0) + 1
+
+        # Voice events
+        if event_type == "voice_event":
+            if "candidate" in category:
+                summary["voice_events"]["candidate"] += 1
+            elif "unknown" in category:
+                summary["voice_events"]["unknown"] += 1
+            elif "noise" in category:
+                summary["voice_events"]["noise"] += 1
+
+        # Face warnings
+        if reason == "face not found":
+            summary["face_warnings"]["face_not_found"] += 1
+        elif reason == "multiple persons in frame":
+            summary["face_warnings"]["multiple_faces"] += 1
+
+        # Eye & blinking
+        elif reason == "looking_away_from_screen":
+            summary["eye_warnings"]["looking_away"] += 1
+        elif reason == "suspicious_eye_movement":
+            summary["eye_warnings"]["suspicious_movement"] += 1
+        elif reason == "suspicious blinking detected":
+            summary["eye_warnings"]["blinking_violations"] += 1
+
+        # Frontend event keywords
+        if "tab or window switch" in msg:
+            summary["frontend_violations"]["tab_switches"] += 1
+        elif "fullscreen exited" in msg:
+            summary["frontend_violations"]["fullscreen_exits"] += 1
+        elif "no activity detected" in msg:
+            summary["frontend_violations"]["inactivity"] += 1
+        elif "extended monitor" in msg:
+            summary["frontend_violations"]["extended_monitor"] += 1
+        elif "geolocation error" in msg:
+            summary["frontend_violations"]["geolocation_error"] += 1
+
+    return summary
 
 
 ## API ROUTES
@@ -304,7 +381,7 @@ def log_event():
 
     event = {
         "timestamp": timestamp,
-        "type": "log_event",
+        "type": "violation",
         "message": message
     }
     SESSIONS[exam_id]["events"].append(event)
@@ -425,6 +502,10 @@ def end_exam():
         json.dump(report, f, indent=2)
 
     return jsonify(report)
+
+@app.route("/summary/<exam_id>")
+def get_exam_summary(exam_id):
+    return jsonify(get_summary(exam_id))
 
 if __name__ == "__main__":
     app.run(debug=True, threaded=True)
