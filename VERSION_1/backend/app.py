@@ -1,3 +1,4 @@
+
 from flask import Flask, request, jsonify, render_template
 import os
 import uuid
@@ -389,7 +390,7 @@ def log_event():
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('exam.html')
 
 @app.route('/start_exam', methods=['POST'])
 def start_exam():
