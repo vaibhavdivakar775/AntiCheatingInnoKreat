@@ -11,44 +11,46 @@ let countdownInterval = null;
 let examId = null;
 let lastActivity = Date.now();
 
-// Clipboard monitoring
-["copy", "cut", "paste"].forEach(evt => {
-    document.addEventListener(evt, async (e) => {
-        let clipText = "";
-        if (evt === "paste") {
-            clipText = (e.clipboardData || window.clipboardData).getData('text') || "";
-        } else {
-            try {
-                clipText = await navigator.clipboard.readText();
-            } catch (err) {
-                console.warn("Clipboard read failed:", err);
-                clipText = "[Could not read clipboard]";
-            }
-        }
 
-        const preview = clipText.length > 30 ? clipText.slice(0, 30) + "..." : clipText;
-        logEvent(`${evt.toUpperCase()} detected. Preview: "${preview}"`);
-    });
-});
+///////  functions
+
+
+// Clipboard monitoring
+// ["copy", "cut", "paste"].forEach(evt => {
+//     document.addEventListener(evt, async (e) => {
+//         let clipText = "";
+//         if (evt === "paste") {
+//             clipText = (e.clipboardData || window.clipboardData).getData('text') || "";
+//         } else {
+//             try {
+//                 clipText = await navigator.clipboard.readText();
+//             } catch (err) {
+//                 console.warn("Clipboard read failed:", err);
+//                 clipText = "[Could not read clipboard]";
+//             }
+//         }
+
+//         const preview = clipText.length > 30 ? clipText.slice(0, 30) + "..." : clipText;
+//         logEvent(`${evt.toUpperCase()} detected. Preview: "${preview}"`);
+//     });
+// });
+
 
 function logEvent(msg) {
-    console.log(`[${new Date().toLocaleTimeString()}] ${msg}`);
-    if (examId) {
-        fetch('/log_event', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                exam_id: examId,
-                timestamp: Date.now(),
-                message: msg
-            })
-        });
-    }
-}
+console.log(`[${new Date().toLocaleTimeString()}] ${msg}`);
+if (examId) {
+fetch('/log_event', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+      exam_id: examId,
+      timestamp: Date.now(),
+      message: msg  })
+        });}}
 //inactivity
 setInterval(() => {
-    if (Date.now() - lastActivity > 30000) {
-        logEvent("No activity detected for more than 30 seconds");
+    if (Date.now() - lastActivity > 60000) {
+        logEvent("No activity detected for more than 60 seconds");
         lastActivity = Date.now();
     }
 }, 5000);
@@ -57,7 +59,6 @@ setInterval(() => {
 ["mousemove", "keydown", "click"].forEach(evt =>
     document.addEventListener(evt, () => lastActivity = Date.now())
 );
-
 
 // Tab/window switch detection
 window.onblur = () => logEvent("Tab or window switch detected");
@@ -68,6 +69,7 @@ document.addEventListener("fullscreenchange", () => {
         logEvent("Fullscreen exited during exam");
     }
 });
+
 //dual monitor
 function checkExtendedMonitor() {
     if (window.screen && (window.screen.availWidth > window.screen.width || window.screen.availHeight > window.screen.height)) {
@@ -80,7 +82,7 @@ function logGeolocation() {
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 const { latitude, longitude, accuracy } = position.coords;
-                logEvent(`🌍 Location: Lat ${latitude.toFixed(5)}, Lng ${longitude.toFixed(5)}, ±${accuracy}m`);
+                logEvent(`Location: Lat ${latitude.toFixed(5)}, Lng ${longitude.toFixed(5)}, ±${accuracy}m`);
             },
             (error) => {
                 logEvent(`Geolocation error: ${error.message}`);
@@ -90,6 +92,8 @@ function logGeolocation() {
         logEvent("Geolocation not supported in this browser.");
     }
 }
+
+
 
 async function startExam() {
   mediaStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
@@ -217,45 +221,36 @@ async function endExam() {
   window.location.href = "/report";
 }
 
-registerBtn.addEventListener("click", async () => {
-  if (!examId) {
-    alert("Exam not started. Start the exam first.");
-    return;
-  }
+// registerBtn.addEventListener("click", async () => {
+//   if (!examId) {
+//     alert("Exam not started. Start the exam first.");
+//     return;
+//   }
 
-  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-  const recorder = new MediaRecorder(stream);
-  let chunks = [];
+//   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+//   const recorder = new MediaRecorder(stream);
+//   let chunks = [];
 
-  recorder.ondataavailable = e => chunks.push(e.data);
+//   recorder.ondataavailable = e => chunks.push(e.data);
 
-  recorder.onstop = async () => {
-    const blob = new Blob(chunks, { type: 'audio/webm' });
-    const formData = new FormData();
-    formData.append("audio", blob, "voice_sample.webm");
-    formData.append("exam_id", examId);
+//   recorder.onstop = async () => {
+//     const blob = new Blob(chunks, { type: 'audio/webm' });
+//     const formData = new FormData();
+//     formData.append("audio", blob, "voice_sample.webm");
+//     formData.append("exam_id", examId);
 
-    const res = await fetch('/register_voice', {
-      method: "POST",
-      body: formData
-    });
+//     const res = await fetch('/register_voice', {
+//       method: "POST",
+//       body: formData
+//     });
 
-    const result = await res.json();
-    alert(result.status || result.error);
-  };
+//     const result = await res.json();
+//     alert(result.status || result.error);
+//   };
 
-  recorder.start();
-  setTimeout(() => recorder.stop(), 5000);
-});
-
-function showReport(report) {
-  let html = "<h2>Exam Report</h2><ul>";
-  for (const event of report.events) {
-    html += `<li>[${new Date(event.timestamp).toLocaleTimeString()}] ${event.message}</li>`;
-  }
-  html += "</ul>";
-  reportEl.innerHTML = html;
-}
+//   recorder.start();
+//   setTimeout(() => recorder.stop(), 5000);
+// });
 
 startBtn.addEventListener("click", startExam);
 endBtn.addEventListener("click", endExam);
