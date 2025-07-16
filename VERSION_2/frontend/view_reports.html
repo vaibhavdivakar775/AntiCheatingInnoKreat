@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam Reports</title>
+    <style>
+        table, th, td { border: 1px solid black; border-collapse: collapse; padding: 5px; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Stored Exam Reports</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Exam ID</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Total Events</th>
+                <th>Object Detections</th>
+                <th>Voice Candidate</th>
+                <th>Voice Unknown</th>
+                <th>Voice Noise</th>
+                <th>Face Not Found</th>
+                <th>Multiple Faces</th>
+                <th>Looking Away</th>
+                <th>Suspicious Movement</th>
+                <th>Blinking Violations</th>
+                <th>Tab Switches</th>
+                <th>Fullscreen Exits</th>
+                <th>Inactivity</th>
+                <th>Extended Monitor</th>
+                <th>Geolocation Error</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for report in reports %}
+            <tr>
+                <td>{{ report.id }}</td>
+                <td>{{ report.exam_id }}</td>
+                <td>{{ report.start_time }}</td>
+                <td>{{ report.end_time }}</td>
+                <td>{{ report.total_events }}</td>
+                <td>{{ report.object_detections }}</td>
+                <td>{{ report.voice_candidate }}</td>
+                <td>{{ report.voice_unknown }}</td>
+                <td>{{ report.voice_noise }}</td>
+                <td>{{ report.face_not_found }}</td>
+                <td>{{ report.multiple_faces }}</td>
+                <td>{{ report.eye_looking_away }}</td>
+                <td>{{ report.eye_suspicious_movement }}</td>
+                <td>{{ report.eye_blinking_violations }}</td>
+                <td>{{ report.frontend_tab_switches }}</td>
+                <td>{{ report.frontend_fullscreen_exits }}</td>
+                <td>{{ report.frontend_inactivity }}</td>
+                <td>{{ report.frontend_extended_monitor }}</td>
+                <td>{{ report.frontend_geolocation_error }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
