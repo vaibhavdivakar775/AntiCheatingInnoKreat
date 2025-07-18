@@ -8,3 +8,4 @@ models/weight/best.pt contains the best trained model for object detection the l
 
 ** folder structure should be maintained **
 
+this version contains database as well
